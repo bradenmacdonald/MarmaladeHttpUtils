@@ -6,10 +6,9 @@ spawn and manage worker threads to allow fast parallel downloads.
 
 Usage: see example in `HttpUtils.cpp` 
 
-You can also subclass `HttpClient` to create things like: 
+You can also subclass `HttpClient` and/or `HttpRequest` to create things like:
  * A file downloader
- * A YouTube API Client (we have done this to upload videos from iOS/Android,
-   and it works really well)
+ * A YouTube API Client (example included in the `youtube` folder)
  * A client for your custom API
  * etc.
 
