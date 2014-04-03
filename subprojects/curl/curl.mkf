@@ -1,0 +1,15 @@
+includepath "source"
+includepath include
+
+files
+{
+    ("source")    
+}
+
+subprojects
+{
+    zlib
+    third_party/openssl
+}
+
+library ".,curl"

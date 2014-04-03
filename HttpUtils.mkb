@@ -1,0 +1,32 @@
+#!/usr/bin/env mkb
+
+options 
+{
+    module_path="subprojects"
+	enable-exceptions=1
+	cflags="-std=c++0x"
+}
+
+files
+{
+    HttpUtils.cpp
+    (src)
+    "*.cpp"
+    "*.h"
+
+    [util]
+    (src/util)
+    "*.cpp"
+    "*.h"
+}
+
+subprojects
+{
+    iwutil
+    curl
+    third_party/openssl
+}
+
+deployment
+{
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env mkb
+option lib
+
+subproject curl
+
+includepath "source"
+
+files
+{
+    ("source")
+    "*.c"
+    "*.h"
+}
