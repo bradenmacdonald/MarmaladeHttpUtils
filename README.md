@@ -4,7 +4,9 @@ HttpUtils for Marmalade
 A Marmalade-friendly wrapper around libcurl. `HttpClient` will automatically
 spawn and manage worker threads to allow fast parallel downloads.
 
-Usage: see example in `HttpUtils.cpp` 
+Usage & Example
+---------------
+For general usage info, see the example in [`HttpUtils.cpp`](HttpUtils.cpp)
 
 You can also subclass `HttpClient` and/or `HttpRequest` to create things like:
  * A file downloader
@@ -13,6 +15,15 @@ You can also subclass `HttpClient` and/or `HttpRequest` to create things like:
  * etc.
 
 Or, you can use the included `HttpClient` or `HttpDownloader` for basic GET/POST/PUT requests.
+
+HTTPS Support
+-------------
+HTTPS support is included and enabled, however it will not work out of the box
+unless you correctly configure OpenSSL/CURL to be able to verify the
+certificates of the server[s] you use. See `HttpClient_WorkerThread()` in
+[`HttpClient.cpp`](src/HttpClient.cpp) for a comment describing how to
+disable certificate checks if you want a quick-and-dirty insecure way to test
+an HTTPS connection.
 
 Curl patch notes
 ----------------
