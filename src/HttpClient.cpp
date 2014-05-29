@@ -128,11 +128,11 @@ static void* HttpClient_WorkerThread(void *_pWorker) {
 	
 	pWorker->pCurl = curl_easy_init();
 	curl_easy_setopt(pWorker->pCurl, CURLOPT_USERAGENT, pWorker->userAgent);
-	//curl_easy_setopt(pWorker->pCurl, CURLOPT_VERBOSE, 1L);
 	
-	// BAD: We are disabling SSL certificate checks, as verification is failing for seemingly all sites.
-	// Would be better to include the right certificates, but we're not too concerned about it.
-	curl_easy_setopt(pWorker->pCurl, CURLOPT_SSL_VERIFYPEER, 0L);
+	// SSL: certificates must be configured correctly (not done out of the box by us),
+	// OR for testing purposes, you can disable peer certificate verification with this 
+	// line (obviously, this is insecure and should not be used in production apps):
+	//curl_easy_setopt(pWorker->pCurl, CURLOPT_SSL_VERIFYPEER, 0L);
 	
 	while (!pWorker->cancelAndQuit) {
 		const Ptr<HttpRequest>& pRequest = pWorker->pRequest; // Note, it's very important that we don't change the HttpRequest object's reference count from this thread
