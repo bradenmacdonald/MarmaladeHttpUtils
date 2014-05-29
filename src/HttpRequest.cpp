@@ -67,7 +67,7 @@ void HttpDownload::Worker_HandleDone(bool success, int httpStatusCode) {
 	if (m_pTmpFile) {
 		s3eFileClose(m_pTmpFile);
 		m_pTmpFile = nullptr;
-		if (httpStatusCode == 200)
+		if (success && httpStatusCode == 200)
 			s3eFileRename(string(m_destFile).append(".tmp").c_str(), m_destFile.c_str());
 		else
 			s3eFileDelete(string(m_destFile).append(".tmp").c_str());
